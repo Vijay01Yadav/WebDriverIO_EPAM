@@ -1,3 +1,4 @@
+// var exec = require('child_process').exec
 exports.config = {
     //
     // ====================
@@ -20,8 +21,22 @@ exports.config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
+    reporters: [['allure', {
+        outputDir: 'allure-results',
+        // disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
+    mochaOpts: {
+        grep: "E2ETest"
+    },
+    suites: {
+        E2ETestsuite: ['./test/specs/EPAMMod2_Task1NTask2.js'],
+        SmokeTestSuite: ["./test/specs/EPAMMode1_Task1.js"],
+        EPAM3TaskMOD2:["./test/specs/EPAMMod2_Task3.js"]
+        // InvalidLoginSuite: ['./test/specs/login.js']
+    },
     specs: [
-        './test/specs/**/*.js'
+        './test/specs/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -57,6 +72,15 @@ exports.config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
+        'goog:chromeOptions': {
+            // to run chrome headless the following flags are required
+            // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+            args: [
+                '--start-maximized',
+                // '--headless', '--disable-gpu','--window-size=1920,1080'
+            ],
+            excludeSwitches:['enable-automation']
+            },
         acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
@@ -88,7 +112,7 @@ exports.config = {
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
-    bail: 0,
+    bail: 5,
     //
     // Set a base URL in order to shorten url command calls. If your `url` parameter starts
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
@@ -132,7 +156,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    // reporters: ['spec'],
 
 
     
@@ -186,7 +210,9 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      * @param {String} cid worker id (e.g. 0-0)
      */
-    // beforeSession: function (config, capabilities, specs, cid) {
+    // beforeSession: async function (config, capabilities, specs, cid) {
+    //     await exec("rm -rf allure-results");
+    //     await exec("rm -rf allure-report");
     // },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -237,8 +263,11 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+        if (error) {
+            await browser.takeScreenshot();
+          }
+    },
 
 
     /**
@@ -271,7 +300,8 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // afterSession: function (config, capabilities, specs) {
+    // afterSession:async  function (config, capabilities, specs) {
+    //     await exec("allure generate  allure-results && allure open");
     // },
     /**
      * Gets executed after all workers got shut down and the process is about to exit. An error
