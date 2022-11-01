@@ -20,7 +20,8 @@
         "wdioE2ETest": "wdio run wdio.conf.js --mochaOpts.grep E2ETest",
         "wdioSmokeTest": "wdio run wdio.conf.js --mochaOpts.grep SmokeTest",
         "wdioSuiteE2ETest": "npx wdio run wdio.conf.js --suite E2ETestsuite",
-        "wdioEPAMTask3":"npx wdio run wdio.conf.js --suite EPAM3TaskMOD2"
+        "wdioEPAMTask3":"npx wdio run wdio.conf.js --suite EPAM3TaskMOD2",
+        "wdioEPAMMod3Task2":"npx wdio run wdio.conf.js --suite EPAMMOD3Task2"
     },
     "dependencies": {
         "chai": "^4.3.6"

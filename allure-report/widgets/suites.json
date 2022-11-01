@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"b6fc3de17acc9390e74e031484dc6050","name":"Validating the complete saucedemo Website","statistic":{"failed":0,"broken":0,"skipped":1,"passed":6,"unknown":0,"total":7}},{"uid":"706a38de825b007dbe946f0bde67ae2d","name":"Validating the External Wait in WebDriverIO","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}

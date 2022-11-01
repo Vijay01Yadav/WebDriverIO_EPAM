@@ -32,7 +32,8 @@ exports.config = {
     suites: {
         E2ETestsuite: ['./test/specs/EPAMMod2_Task1NTask2.js'],
         SmokeTestSuite: ["./test/specs/EPAMMode1_Task1.js"],
-        EPAM3TaskMOD2:["./test/specs/EPAMMod2_Task3.js"]
+        EPAM3TaskMOD2:["./test/specs/EPAMMod2_Task3.js"],
+        EPAMMOD3Task2:["./test/specs/EPAMMod3_Task2.js"]
         // InvalidLoginSuite: ['./test/specs/login.js']
     },
     specs: [
@@ -79,7 +80,7 @@ exports.config = {
                 '--start-maximized',
                 // '--headless', '--disable-gpu','--window-size=1920,1080'
             ],
-            excludeSwitches:['enable-automation']
+            // excludeSwitches:['enable-automation']
             },
         acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
