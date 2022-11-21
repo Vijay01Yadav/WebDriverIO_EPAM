@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//a[@class='shopping_cart_link']"
-}

@@ -9,6 +9,7 @@
     "devDependencies": {
         "@wdio/allure-reporter": "^7.25.4",
         "@wdio/cli": "^7.25.2",
+        "@wdio/devtools-service": "^7.25.4",
         "@wdio/local-runner": "^7.25.2",
         "@wdio/mocha-framework": "^7.25.2",
         "@wdio/spec-reporter": "^7.25.1",
@@ -20,8 +21,9 @@
         "wdioE2ETest": "wdio run wdio.conf.js --mochaOpts.grep E2ETest",
         "wdioSmokeTest": "wdio run wdio.conf.js --mochaOpts.grep SmokeTest",
         "wdioSuiteE2ETest": "npx wdio run wdio.conf.js --suite E2ETestsuite",
-        "wdioEPAMTask3":"npx wdio run wdio.conf.js --suite EPAM3TaskMOD2",
-        "wdioEPAMMod3Task2":"npx wdio run wdio.conf.js --suite EPAMMOD3Task2"
+        "wdioEPAMTask3": "npx wdio run wdio.conf.js --suite EPAM3TaskMOD2",
+        "wdioEPAMMod3Task2": "npx wdio run wdio.conf.js --suite EPAMMOD3Task2",
+        "wdioEPAMMod4": "npx wdio run wdio.conf.js --suite EPAMMod4"
     },
     "dependencies": {
         "chai": "^4.3.6"

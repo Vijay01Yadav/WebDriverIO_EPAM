@@ -33,7 +33,8 @@ exports.config = {
         E2ETestsuite: ['./test/specs/EPAMMod2_Task1NTask2.js'],
         SmokeTestSuite: ["./test/specs/EPAMMode1_Task1.js"],
         EPAM3TaskMOD2:["./test/specs/EPAMMod2_Task3.js"],
-        EPAMMOD3Task2:["./test/specs/EPAMMod3_Task2.js"]
+        EPAMMOD3Task2:["./test/specs/EPAMMod3_Task2.js"],
+        EPAMMod4:["./test/specs/EPAMMod4_Task1.js"]
         // InvalidLoginSuite: ['./test/specs/login.js']
     },
     specs: [
@@ -80,7 +81,7 @@ exports.config = {
                 '--start-maximized',
                 // '--headless', '--disable-gpu','--window-size=1920,1080'
             ],
-            // excludeSwitches:['enable-automation']
+            excludeSwitches:['enable-automation']
             },
         acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
@@ -135,7 +136,8 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    // services: ['chromedriver'],
+    services: ['devtools'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
